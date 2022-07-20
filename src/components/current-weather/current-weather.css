@@ -1,11 +1,17 @@
 .weather {
-  width: 300px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0)
+  );
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 6px;
-  box-shadow: 10px -2px 20px 2px rgb (0 0 0 /50%);
-  color: #fff;
-  background-color: rgb(121, 121, 121);
-  margin: 20px auto 0 auto;
+  width: 300px;
   padding: 0 20px 20px 20px;
+  margin: 20px auto 0 auto;
 }
 
 .top,
