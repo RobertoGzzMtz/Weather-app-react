@@ -31,7 +31,8 @@ const LocalWeather = () => {
 
   useEffect(() => {
     fetchData();
-  }, [lat, lon, fetchData]);
+    // eslint-disable-next-line
+  }, [lat, lon]);
 
   return (
     <div className="App">
