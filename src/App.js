@@ -4,6 +4,7 @@ import CurrentWeather from "./components/current-weather/current-weather";
 import { WEATHER_API_URL, API_KEY } from "./api";
 import { useState } from "react";
 import Forecast from "./components/forecast/forecast";
+import LocalWeather from "./components/local-weather/local-weather";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
@@ -24,11 +25,13 @@ function App() {
       .then(async (response) => {
         const weatherResponse = await response[0].json();
         const forcastResponse = await response[1].json();
+        console.log(searchData);
 
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
         setforcastWeather({ city: searchData.label, ...forcastResponse });
       })
       .catch((error) => {
+        setCurrentWeather(null);
         console.log(error);
       });
   };
@@ -36,8 +39,14 @@ function App() {
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
-      {currentWeather && <CurrentWeather data={currentWeather} />}
-      {forcastWeather && <Forecast data={forcastWeather} />}
+      {currentWeather === null || !currentWeather ? (
+        <LocalWeather />
+      ) : (
+        <div>
+          <CurrentWeather data={currentWeather} />
+          <Forecast data={forcastWeather} />
+        </div>
+      )}
     </div>
   );
 }
