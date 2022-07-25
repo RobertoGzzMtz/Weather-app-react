@@ -31,7 +31,7 @@ const LocalWeather = () => {
 
   useEffect(() => {
     fetchData();
-  }, [lat, lon]);
+  }, [lat, lon, fetchData]);
 
   return (
     <div className="App">
